@@ -12,17 +12,6 @@ namespace FileKnight
     {
         static void Main(string[] args)
         {
-            string input = "test";
-            
-            //var encodings = Encoding.GetEncodings().Where(e => e.Name.Contains("utf")).Select(e => e.GetEncoding());
-
-            //foreach (var e in encodings)
-            //{
-            //    Hash(e, input);
-            //}
-
-            Hash(Encoding.UTF8, input);
-            Hash(Encoding.UTF7, input);
 
             
 
@@ -31,17 +20,7 @@ namespace FileKnight
 #endif
         }
 
-        private static void Hash(Encoding encoding, string input)
-        {
-
-            string output = Hasher.HashToString(encoding, input);
-
-            Console.WriteLine();
-            Console.WriteLine(encoding.EncodingName);
-            Console.WriteLine(output);
-            
-        }
-
+        
         
     }
 }
