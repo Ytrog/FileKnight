@@ -8,9 +8,9 @@ using System.Security.Cryptography;
 
 namespace FileKnight.Core
 {
-    class Hasher
+    public static class Hasher
     {
-        public byte[] HashToBytes(byte[] input)
+        public static byte[] HashToBytes(byte[] input)
         {
             byte[] hash;
             using (var hasher = SHA512Managed.Create())
@@ -20,16 +20,30 @@ namespace FileKnight.Core
             return hash;
         }
 
-        public byte[] HashToBytes(string input)
+        public static byte[] HashToBytes(string input)
         {
             return HashToBytes(Encoding.UTF8, input);
         }
 
-        public byte[] HashToBytes(Encoding encoding, string input)
+        public static byte[] HashToBytes(Encoding encoding, string input)
         {
             return HashToBytes(encoding.GetBytes(input));
         }
 
+        public static string HashToString(Encoding encoding, string input)
+        {
+            return ToHexString(HashToBytes(encoding, input));
+        }
+
+        public static string HashToString(string input)
+        {
+            return HashToString(Encoding.UTF8, input);
+        }
+
+        public static string HashToString(byte[] input)
+        {
+            return ToHexString(HashToBytes(input));
+        }
 
         private static string ToHexString(byte[] hash)
         {
