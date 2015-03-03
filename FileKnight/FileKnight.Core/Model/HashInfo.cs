@@ -6,15 +6,23 @@ using System.Threading.Tasks;
 
 namespace FileKnight.Core.Model
 {
-    public class HashInfo
+    public class HashInfo : IEquatable<HashInfo>
     {
-        public string Path { get; set; }
-        public string HashString { get; set; }
-        public byte[] Hash { get; set; }
+        public string Path { get; private set; }
+        public string HashString { get { return StringUtils.ToHexString(Hash); } }
+        public byte[] Hash { get; private set; }
 
-        public HashInfo(string path, string hashString, byte[] Hash)
+        public HashInfo(string path, byte[] hash)
         {
+            Path = path;
+            Hash = hash;
+        }
 
+
+
+        public bool Equals(HashInfo other)
+        {
+            return Path.Equals(other.Path) && Hash == other.Hash;
         }
     }
 }
