@@ -32,7 +32,7 @@ namespace FileKnight.Core
 
         public static string HashToString(Encoding encoding, string input)
         {
-            return ToHexString(HashToBytes(encoding, input));
+            return StringUtils.ToHexString(HashToBytes(encoding, input));
         }
 
         public static string HashToString(string input)
@@ -42,19 +42,9 @@ namespace FileKnight.Core
 
         public static string HashToString(byte[] input)
         {
-            return ToHexString(HashToBytes(input));
+            return StringUtils.ToHexString(HashToBytes(input));
         }
 
-        private static string ToHexString(byte[] hash)
-        {
-            StringBuilder sb = new StringBuilder();
-
-            foreach (byte b in hash)
-            {
-                sb.Append(b.ToString("x2"));
-            }
-
-            return sb.ToString();
-        }
+        
     }
 }

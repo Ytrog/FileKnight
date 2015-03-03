@@ -11,5 +11,10 @@ namespace FileKnight.Core.Model
         public string Path { get; set; }
         public string HashString { get; set; }
         public byte[] Hash { get; set; }
+
+        public HashInfo(string path, string hashString, byte[] Hash)
+        {
+
+        }
     }
 }
