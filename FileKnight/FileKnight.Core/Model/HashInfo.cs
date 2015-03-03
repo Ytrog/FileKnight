@@ -24,5 +24,23 @@ namespace FileKnight.Core.Model
         {
             return Path.Equals(other.Path) && Hash == other.Hash;
         }
+
+        public override string ToString()
+        {
+            return "{0} \t {1}".FormatInvariant(Path, HashString);
+        }
+
+        public override bool Equals(object obj)
+        {
+            HashInfo other = obj as HashInfo;
+            if (other != null)
+            {
+                return Equals(other);
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

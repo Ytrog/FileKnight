@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using FileKnight.Core;
 using System.IO;
+using FileKnight.Core.Model;
 
 namespace FileKnight
 {
@@ -18,10 +19,11 @@ namespace FileKnight
             Options options = new Options();
             if(parser.ParseArguments(args, options))
             {
-                string hash = HashFile(options.File);
+                var hash = HashFile(options.File.AsAbsolutePath());
+                Console.WriteLine(hash);
                 if (options.AddFile)
                 {
-
+                    
                 }
             }
 
@@ -30,14 +32,14 @@ namespace FileKnight
 #endif
         }
 
-        private static string HashFile(string path)
+        private static HashInfo HashFile(string path)
         {
+            
             if (File.Exists(path))
             {
                 var input = File.ReadAllBytes(path);
-                var output = Hasher.HashToString(input);
-                Console.WriteLine(output);
-                return output;
+                var output = Hasher.HashToBytes(input);
+                return new HashInfo(path, output);
             }
             else
             {
