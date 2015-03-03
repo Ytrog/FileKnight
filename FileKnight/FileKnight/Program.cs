@@ -18,7 +18,11 @@ namespace FileKnight
             Options options = new Options();
             if(parser.ParseArguments(args, options))
             {
-                HashFile(options.File);
+                string hash = HashFile(options.File);
+                if (options.AddFile)
+                {
+
+                }
             }
 
 #if DEBUG
@@ -26,13 +30,19 @@ namespace FileKnight
 #endif
         }
 
-        private static void HashFile(string path)
+        private static string HashFile(string path)
         {
             if (File.Exists(path))
             {
                 var input = File.ReadAllBytes(path);
                 var output = Hasher.HashToString(input);
                 Console.WriteLine(output);
+                return output;
+            }
+            else
+            {
+                Console.Error.WriteLine("file {0} not found", path); // TODO log4net
+                throw new FileNotFoundException();
             }
         }
 
