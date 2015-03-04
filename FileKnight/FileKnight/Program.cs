@@ -15,17 +15,27 @@ namespace FileKnight
         static void Main(string[] args)
         {
 
-            var parser = CommandLine.Parser.Default;
+            var parser = new CommandLine.Parser(BuildParserSettings);
+            //parser.Settings.MutuallyExclusive = true;
             Options options = new Options();
-            if(parser.ParseArguments(args, options))
+            if(parser.ParseArgumentsStrict(args, options))
             {
                 var hash = HashFile(options.File.AsAbsolutePath());
                 Console.WriteLine(hash);
                 if (options.AddFile)
                 {
-                    
+                    Console.WriteLine("adding file");
+                }
+                if (options.List)
+                {
+                    Console.WriteLine("listing hashes");
                 }
             }
+            else
+            {
+                Console.WriteLine(options.GetUsage());
+            }
+                    
 
 #if DEBUG
             Console.ReadKey();
@@ -46,6 +56,18 @@ namespace FileKnight
                 Console.Error.WriteLine("file {0} not found", path); // TODO log4net
                 throw new FileNotFoundException();
             }
+        }
+
+
+        private static void BuildParserSettings(CommandLine.ParserSettings settings)
+        {
+            var defaultSettings = CommandLine.Parser.Default.Settings;
+
+            settings.CaseSensitive = defaultSettings.CaseSensitive;
+            settings.HelpWriter = defaultSettings.HelpWriter;
+            settings.IgnoreUnknownArguments = defaultSettings.IgnoreUnknownArguments;
+            settings.MutuallyExclusive = true;
+            settings.ParsingCulture = defaultSettings.ParsingCulture;
         }
 
         

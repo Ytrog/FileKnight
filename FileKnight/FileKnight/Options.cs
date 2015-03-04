@@ -9,12 +9,12 @@ namespace FileKnight
 {
     class Options
     {
-        [Option('f', "file", Required=true, HelpText="File to hash", MutuallyExclusiveSet="add")]
+        [Option('f', "file", Required=true, HelpText="File to hash")]
         public string File { get; set; }
 
-        [Option('a', HelpText="Add the file to the database", MutuallyExclusiveSet="add")]
+        [Option('a', HelpText="Add the file to the database", MutuallyExclusiveSet="add/display")]
         public bool AddFile { get; set; }
-        [Option('l', "list", HelpText="List all the saved hashes", MutuallyExclusiveSet="display")]
+        [Option('l', "list", HelpText="List all the saved hashes", MutuallyExclusiveSet="add/display")]
         public bool List { get; set; }
 
         [HelpOption]
