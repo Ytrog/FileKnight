@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace FileKnight.Core.Model
 {
+    /// <summary>
+    /// Provides information about a hashed file
+    /// </summary>
     public class HashInfo : IEquatable<HashInfo>
     {
         public string Path { get; private set; }
