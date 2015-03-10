@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace FileKnight
 {
+    /// <summary>
+    /// Commandline options
+    /// </summary>
     class Options
     {
         [Option('f', "file", Required=true, HelpText="File to hash")]
