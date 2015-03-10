@@ -67,7 +67,7 @@ namespace FileKnight
         {
             var defaultSettings = CommandLine.Parser.Default.Settings;
 
-            settings.CaseSensitive = defaultSettings.CaseSensitive;
+            settings.CaseSensitive = true;
             settings.HelpWriter = defaultSettings.HelpWriter;
             settings.IgnoreUnknownArguments = defaultSettings.IgnoreUnknownArguments;
             settings.MutuallyExclusive = true;
