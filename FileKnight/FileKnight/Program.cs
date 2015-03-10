@@ -30,6 +30,10 @@ namespace FileKnight
                 {
                     Console.WriteLine("listing hashes");
                 }
+                if (options.Critical)
+                {
+                    Console.WriteLine("File is critical");
+                }
             }
             else
             {

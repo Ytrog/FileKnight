@@ -16,6 +16,10 @@ namespace FileKnight
         public bool AddFile { get; set; }
         [Option('l', "list", HelpText="List all the saved hashes", MutuallyExclusiveSet="add/display")]
         public bool List { get; set; }
+        [Option('c', "critical", HelpText="Mark a file as critical")]
+        public bool Critical { get; set; }
+        [Option('C', "check", HelpText="Check the database for changes")]
+        public bool Check { get; set; }
 
         [HelpOption]
         public string GetUsage()
