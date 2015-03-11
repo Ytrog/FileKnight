@@ -12,16 +12,16 @@ namespace FileKnight
     /// </summary>
     class Options
     {
-        [Option('f', "file", Required=true, HelpText="File to hash")]
+        [Option('f', "file", Required = true, HelpText = "File to hash")]
         public string File { get; set; }
 
-        [Option('a', HelpText="Add the file to the database", MutuallyExclusiveSet="add/display")]
+        [Option('a', HelpText = "Add the file to the database", MutuallyExclusiveSet = "add/display")]
         public bool AddFile { get; set; }
-        [Option('l', "list", HelpText="List all the saved hashes", MutuallyExclusiveSet="add/display")]
+        [Option('l', "list", HelpText = "List all the saved hashes", MutuallyExclusiveSet = "add/display")]
         public bool List { get; set; }
-        [Option('c', "critical", HelpText="Mark a file as critical (in combination with a) or check critical files only (in combination with C)")]
+        [Option('c', "critical", HelpText = "Mark a file as critical (in combination with a) or check critical files only (in combination with C)")]
         public bool Critical { get; set; }
-        [Option('C', "check", HelpText="Check the database for changes", MutuallyExclusiveSet="add/display")]
+        [Option('C', "check", HelpText = "Check the database for changes", MutuallyExclusiveSet = "add/display")]
         public bool Check { get; set; }
 
         [HelpOption]
